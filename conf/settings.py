@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     # local
     'foods.apps.FoodsConfig',
+    'orders.apps.OrdersConfig',
 ]
 
 MIDDLEWARE = [
