@@ -4,6 +4,7 @@
 	--header-height: 4rem;
 	--order-width: 24rem;
 	--border: 1px solid #aaa;
+	--transition-time: 0.3s;
 }
 
 * {	
@@ -82,7 +83,7 @@ h2 {
 	overflow: auto;
 	background-color: #fff;
 	z-index: 10;
-	transition: 0.3s;
+	transition: var(--transition-time);
 }
 
 .menu-list-box h2, .order-box h2 {
@@ -219,11 +220,12 @@ h2 {
 .checkout-form {
 	position: fixed;
 	bottom: 1rem;
-	right: calc(var(--order-width) * 0.05);
-	width: calc(var(--order-width) * 0.9);
-	padding: 1rem;
+	right: 1.2rem;
+	width: calc(var(--order-width) - 2.4rem);
+	padding: 0.8rem;
 	background-color: rgb(141, 243, 184);
 	border-radius: 0.7rem;
+	transition: var(--transition-time);
 }
 
 .checkout-form > input {
@@ -242,9 +244,8 @@ h2 {
 	height: 3rem;
 	background-color: rgb(74, 196, 74) ;
 	border: none;
-	margin-top: 1rem;
+	margin-top: 0.8rem;
 	padding: 0 1rem;
-	transition: 0.2s;
 	font-size: 1.3rem;
 	font-weight: 700;
 }
@@ -291,9 +292,9 @@ h2 {
 		transform: translateX(0);
 	}
 
-	.checkout {
-		width: 90%;
-		right: 5%;
+	.checkout-form {
+		width: calc(100% - 2.4rem);
+		right: 1.2rem;
 	}
 	
 }

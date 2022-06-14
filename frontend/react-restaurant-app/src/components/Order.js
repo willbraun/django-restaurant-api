@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Cookies from 'js-cookie';
 import OrderItem from './OrderItem';
 
@@ -22,22 +23,20 @@ const showOnlyAllowed = obj => {
 
 const Order = ({state, removeItem, increaseQuantity, decreaseQuantity}) => {
 
+    const [customerName, setCustomerName] = useState('');
+
     const orders = state.selection.map(order => <OrderItem key={order.id} {...order} removeItem={removeItem} increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity}/>);
     const total = state.selection.reduce((acc, i) => acc + (parseFloat(i.price) * i.quantity), 0).toFixed(2);
 
-    const addOrder = async (selections, total) => {
-		
-        const customerName = 'test';
+    const order = {
+        data: {
+            customerName: customerName,
+            items: state.selection.map(item => showOnlyAllowed(item)),
+            total: total,
+        }
+    }
 
-        const items = selections.map(item => showOnlyAllowed(item))
-
-		const order = {
-			data: {
-                customerName: customerName,
-                items: items,
-                total: total,
-            }
-		}
+    const addOrder = async (order) => {
 
 		const options = {
 			method: 'POST',
@@ -47,9 +46,9 @@ const Order = ({state, removeItem, increaseQuantity, decreaseQuantity}) => {
 			},
 			body: JSON.stringify(order),
 		}
-        console.log(options.body)
+
 		const response = await fetch('/api_v1/orders/', options).catch(handleError);
-		console.log(response)
+
 		if(!response.ok) {
 			throw new Error('Network response was not ok!');
 		}
@@ -62,8 +61,8 @@ const Order = ({state, removeItem, increaseQuantity, decreaseQuantity}) => {
             </div>
             <form className="checkout-form">
                 <label htmlFor="customerName"></label>
-                <input type="text" id="customerName" placeholder="Please enter your name..." required></input>
-                <button type="submit" onClick={() => addOrder(state.selection, total)}>
+                <input type="text" id="customerName" placeholder="Please enter your name..." required onChange={(e) => setCustomerName(e.target.value)}></input>
+                <button type="submit" onClick={() => addOrder(order)}>
                     <div>Checkout</div>
                     <div>{`$${total}`}</div>
                 </button>
