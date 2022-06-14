@@ -54,15 +54,22 @@ const Order = ({state, removeItem, increaseQuantity, decreaseQuantity}) => {
 		}
 	}
 
+    const submitForm = (e) => {
+        e.preventDefault();
+        addOrder(order)
+        setCustomerName('');
+        e.target.reset();
+    }
+
     return (
         <section className="order">
             <div className="order-area">
                 {orders}
             </div>
-            <form className="checkout-form">
+            <form className="checkout-form" onSubmit={submitForm}>
                 <label htmlFor="customerName"></label>
                 <input type="text" id="customerName" placeholder="Please enter your name..." required onChange={(e) => setCustomerName(e.target.value)}></input>
-                <button type="submit" onClick={() => addOrder(order)}>
+                <button type="submit">
                     <div>Checkout</div>
                     <div>{`$${total}`}</div>
                 </button>
