@@ -56,7 +56,7 @@ const Order = ({state, removeItem, increaseQuantity, decreaseQuantity}) => {
 
     const submitForm = (e) => {
         e.preventDefault();
-        addOrder(order)
+        addOrder(order);
         setCustomerName('');
         e.target.reset();
     }
