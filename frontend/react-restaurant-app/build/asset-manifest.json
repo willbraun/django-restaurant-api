@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.809fdb75.css",
-    "main.js": "/static/js/main.e63b31da.js",
+    "main.js": "/static/js/main.69b0da6b.js",
     "static/js/787.6a1e1712.chunk.js": "/static/js/787.6a1e1712.chunk.js",
     "static/media/tennis_ball.png": "/static/media/tennis_ball.a186d1fc42aea0333262.png",
     "static/media/bagel_ice_cream.jpeg": "/static/media/bagel_ice_cream.4bd9bdc1639afc28d1f0.jpeg",
@@ -14,11 +14,11 @@
     "static/media/trash-solid.svg": "/static/media/trash-solid.4da6efdae2708ae1b361069b1440fde4.svg",
     "static/media/circle-minus-solid.svg": "/static/media/circle-minus-solid.3d5116d4de2e0957bb9518583d77b82e.svg",
     "main.809fdb75.css.map": "/static/css/main.809fdb75.css.map",
-    "main.e63b31da.js.map": "/static/js/main.e63b31da.js.map",
+    "main.69b0da6b.js.map": "/static/js/main.69b0da6b.js.map",
     "787.6a1e1712.chunk.js.map": "/static/js/787.6a1e1712.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.809fdb75.css",
-    "static/js/main.e63b31da.js"
+    "static/js/main.69b0da6b.js"
   ]
 }
