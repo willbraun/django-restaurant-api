@@ -21,7 +21,7 @@ const showOnlyAllowed = obj => {
     return result
 }
 
-const Order = ({state, removeItem, increaseQuantity, decreaseQuantity}) => {
+const Order = ({state, removeItem, increaseQuantity, decreaseQuantity, clearSelection}) => {
 
     const [customerName, setCustomerName] = useState('');
 
@@ -57,6 +57,7 @@ const Order = ({state, removeItem, increaseQuantity, decreaseQuantity}) => {
     const submitForm = (e) => {
         e.preventDefault();
         addOrder(order);
+        clearSelection()
         setCustomerName('');
         e.target.reset();
     }

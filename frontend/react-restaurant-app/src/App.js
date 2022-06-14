@@ -76,6 +76,10 @@ function App() {
 		setState({...state, showOrderMobile: !state.showOrderMobile})
 	}
 
+	const clearSelection = () => {
+		setState({...state, selection: []})
+	}
+
 	const totalQuantity = state.selection.reduce((acc, i) => acc + i.quantity, 0);
 	
 	return (
@@ -94,7 +98,7 @@ function App() {
         	</main>
 			<aside className={`order-box${state.showOrderMobile ? ' show-order': ''}`}>
             	<h2>Order</h2>
-				<Order state={state} removeItem={removeItem} increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity}/>
+				<Order state={state} removeItem={removeItem} increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity} clearSelection={clearSelection}/>
         	</aside>
     	</div>
   	);
