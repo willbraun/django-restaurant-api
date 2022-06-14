@@ -169,7 +169,7 @@ h2 {
 }
 
 .order-item:last-child {
-	margin-bottom: 5rem;
+	margin-bottom: 10rem;
 }
 
 .img-box-order img {
@@ -216,20 +216,35 @@ h2 {
 	background-color: transparent;
 }
 
-.checkout {
+.checkout-form {
 	position: fixed;
 	bottom: 1rem;
 	right: calc(var(--order-width) * 0.05);
+	width: calc(var(--order-width) * 0.9);
+	padding: 1rem;
+	background-color: rgb(141, 243, 184);
+	border-radius: 0.7rem;
+}
+
+.checkout-form > input {
+	border: 1px solid #ccc
+}
+
+.checkout-form > input, .checkout-form > button {
+	width: 100%;
+	border-radius: 0.2rem;
+}
+
+.checkout-form button {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	height: 3rem;
-	width: calc(var(--order-width) * 0.9);
 	background-color: rgb(74, 196, 74) ;
 	border: none;
+	margin-top: 1rem;
 	padding: 0 1rem;
 	transition: 0.2s;
-	border-radius: 1.5rem;
 	font-size: 1.3rem;
 	font-weight: 700;
 }

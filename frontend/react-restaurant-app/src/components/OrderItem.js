@@ -12,7 +12,7 @@ const OrderItem = ({title, price, id, quantity, imgSrc, imgAlt, removeItem, incr
             <div className="order-content">
                 <p>{title}</p>
                 <div className="price-and-selector">
-                    <p>{`$${(price * quantity).toFixed(2)}`}</p>
+                    <p>{`$${(parseFloat(price) * quantity).toFixed(2)}`}</p>
                     <div className="quantity-select">
                         <button type="button" onClick={() => decreaseQuantity(id)}>
                             <img src={minus} alt="minus sign icon" />
