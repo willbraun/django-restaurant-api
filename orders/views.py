@@ -4,6 +4,8 @@ from .models import Order
 from .serializers import OrderSerializer
 
 # Create your views here.
-class OrderListAPIView(generics.ListAPIView):
+
+
+class OrderListAPIView(generics.ListCreateAPIView):
     queryset = Order.objects.all()
-    serializer_class = OrderSerializer # in serializer, we determine what fields are returned and are edited. Serializes information as JSON.
+    serializer_class = OrderSerializer
