@@ -7,8 +7,11 @@ name = "pypi"
 django = "~=4.0.5"
 pillow = "*"
 djangorestframework = "*"
+gunicorn = "*"
+whitenoise = "~=6.2.0"
 
 [dev-packages]
+flake8 = "*"
 
 [requires]
 python_version = "3.8"
