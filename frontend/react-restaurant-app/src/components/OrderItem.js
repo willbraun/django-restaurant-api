@@ -2,12 +2,12 @@ import plus from './../images/circle-plus-solid.svg'
 import minus from './../images/circle-minus-solid.svg'
 import trashCanIcon from './../images/trash-solid.svg';
 
-const OrderItem = ({title, price, id, quantity, imgSrc, imgAlt, removeItem, increaseQuantity, decreaseQuantity}) => {
+const OrderItem = ({title, price, id, quantity, imgSrc, removeItem, increaseQuantity, decreaseQuantity}) => {
 
     return (
         <article className="order-item">
             <div className="img-box-order">
-                <img src={imgSrc} alt={imgAlt} />
+                <img src={imgSrc} alt={title} />
             </div>
             <div className="order-content">
                 <p>{title}</p>
