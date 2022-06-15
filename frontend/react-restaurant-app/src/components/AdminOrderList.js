@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import AdminOrder from './AdminOrder';
 
 function handleError(err) {
@@ -7,8 +8,6 @@ function handleError(err) {
 
 const AdminOrderList = () => {
     const [orderList, setOrderList] = useState([]);
-
-    // map over order list to create list of AdminOrders
 
     useEffect(() => {
 		const getOrders = async () => {
@@ -19,18 +18,21 @@ const AdminOrderList = () => {
 			}
 
 			const data = await response.json()
+            data.forEach(item => item.uid = uuidv4());
+
 			setOrderList(data);
 		}
 
 		getOrders();
 	}, [])
 
-    const testOrder = orderList[0].map(order => <AdminOrder {...order}/>);
+    const orderListRender = orderList.map(order => <AdminOrder key={order.uid} {...order}/>);
+    
 
     return (
         <section>
             <h2>Orders</h2>
-            {testOrder}
+            {orderListRender}
         </section>
     )
 }
