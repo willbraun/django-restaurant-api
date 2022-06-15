@@ -89,10 +89,10 @@ function App() {
 	
 	const header = (
 		<header>
-			<button type="button" onClick={() => setAdminView(false)}>Customer</button>
-			<button type="button" onClick={() => setAdminView(true)}>Admin</button>
 			<img src={tennisBall} alt="tennis ball" />
 			<h1>Love-All Ice Cream</h1>
+			<button type="button" onClick={() => setAdminView(false)}>Customer</button>
+			<button type="button" onClick={() => setAdminView(true)}>Admin</button>
 			<button className="cart-button" onClick={() => toggleOrderMobile()}>
 				<img className="cart-icon" src={cartIcon} alt="cart icon" />
 				<p className="count">{totalQuantity}</p>

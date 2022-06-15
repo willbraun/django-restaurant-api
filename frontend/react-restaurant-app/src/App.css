@@ -3,8 +3,12 @@
 :root {
 	--header-height: 4rem;
 	--order-width: 24rem;
+	--admin-sidebar-width: 20rem;
 	--border: 1px solid #aaa;
 	--transition-time: 0.3s;
+	--menu-item-color: rgb(185, 238, 255);
+	--order-item-color: rgb(230, 192, 255);
+	--checkout-color: rgb(141, 243, 184);
 }
 
 * {	
@@ -62,8 +66,14 @@ h1 {
 }
 
 h2 {
+	position: sticky;
+	top: 0;
+	background-color: #fff;
+	z-index: 10;
+	padding: 0.5rem;
 	font-size: 1.5rem;
 	font-weight: 700;
+	width: 100%;
 }
 
 .menu-list-box {
@@ -86,17 +96,17 @@ h2 {
 	transition: var(--transition-time);
 }
 
-.menu-list-box h2, .order-box h2 {
+/* .menu-list-box h2, .order-box h2 {
 	position: sticky;
 	top: 0;
 	background-color: #fff;
 	z-index: 10;
 	padding: 0.5rem;
-}
+} */
 
 .menu-item {
 	position: relative;
-	background-color: rgb(185, 238, 255);
+	background-color: var(--menu-item-color);
 	display: flex;
 	height: 13rem;
 	width: 100%;
@@ -161,7 +171,7 @@ h2 {
 	border-radius: 0.7rem;
 	box-shadow: 0 2px 5px 2px #ddd;
 	text-align: left;
-	background-color: rgb(230, 192, 255);
+	background-color: var(--order-item-color);
 }
 
 .order-item p {
@@ -223,7 +233,7 @@ h2 {
 	right: 1.2rem;
 	width: calc(var(--order-width) - 2.4rem);
 	padding: 0.8rem;
-	background-color: rgb(141, 243, 184);
+	background-color: var(--checkout-color);
 	border-radius: 0.7rem;
 	transition: var(--transition-time);
 }
@@ -252,6 +262,37 @@ h2 {
 
 .checkout:hover {
 	background-color: rgb(119, 222, 119);
+}
+
+.admin-sidebar {
+	position: absolute;
+	left: 0;
+	height: 100%;
+	width: 20rem;
+	display: flex;
+	flex-direction: column;
+	border-right: var(--border);
+}
+
+.admin-sidebar > button {
+	margin: 1rem 1rem 0;
+	border: none;
+	border-radius: 0.3rem;
+	font-size: 1.7rem;
+}
+
+.admin-orders-button {
+	background-color: var(--checkout-color);
+}
+
+.admin-menu-items-button {
+	background-color: var(--menu-item-color);
+}
+
+.admin-main {
+	position: absolute;
+	left: var(--admin-sidebar-width);
+	width: calc(100% - var(--admin-sidebar-width))
 }
 
 @media (max-width: 1100px) {
