@@ -1,24 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.910607a2.css",
-    "main.js": "/static/js/main.e3c6a441.js",
+    "main.css": "/static/css/main.5bcfaac2.css",
+    "main.js": "/static/js/main.c88bfb4d.js",
     "static/js/787.6a1e1712.chunk.js": "/static/js/787.6a1e1712.chunk.js",
     "static/media/tennis_ball.png": "/static/media/tennis_ball.a186d1fc42aea0333262.png",
-    "static/media/bagel_ice_cream.jpeg": "/static/media/bagel_ice_cream.4bd9bdc1639afc28d1f0.jpeg",
-    "static/media/strawberries_and_cream.jpeg": "/static/media/strawberries_and_cream.d65b4be903d53562d37f.jpeg",
-    "static/media/banana_ice_cream.jpeg": "/static/media/banana_ice_cream.e926f4a6bac27cbeef7a.jpeg",
-    "static/media/vanilla_ice_cream.png": "/static/media/vanilla_ice_cream.8a0077624a4d3a7816fc.png",
     "index.html": "/index.html",
     "static/media/cart-shopping-solid.svg": "/static/media/cart-shopping-solid.27ffcd49ca8afaba319d03e5758b8670.svg",
     "static/media/circle-plus-solid.svg": "/static/media/circle-plus-solid.1071c7a1ec2124d3c63cdaef3cc30507.svg",
     "static/media/trash-solid.svg": "/static/media/trash-solid.4da6efdae2708ae1b361069b1440fde4.svg",
     "static/media/circle-minus-solid.svg": "/static/media/circle-minus-solid.3d5116d4de2e0957bb9518583d77b82e.svg",
-    "main.910607a2.css.map": "/static/css/main.910607a2.css.map",
-    "main.e3c6a441.js.map": "/static/js/main.e3c6a441.js.map",
+    "main.5bcfaac2.css.map": "/static/css/main.5bcfaac2.css.map",
+    "main.c88bfb4d.js.map": "/static/js/main.c88bfb4d.js.map",
     "787.6a1e1712.chunk.js.map": "/static/js/787.6a1e1712.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.910607a2.css",
-    "static/js/main.e3c6a441.js"
+    "static/css/main.5bcfaac2.css",
+    "static/js/main.c88bfb4d.js"
   ]
 }

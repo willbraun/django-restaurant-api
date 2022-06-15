@@ -72,6 +72,7 @@ const AdminOrder = ({id, data, completed, cancelled}) => {
                 <input type="checkbox" id="completed" defaultChecked={state.completed} onChange={(e) => updateOrder({...state, completed: e.target.checked})}/>
                 <label htmlFor="cancelled">Cancelled</label>
                 <input type="checkbox" id="cancelled" defaultChecked={state.cancelled} onChange={(e) => updateOrder({...state, cancelled: e.target.checked})}/> 
+                <p>${data.total}</p>
             </div>
         </article>
     )
