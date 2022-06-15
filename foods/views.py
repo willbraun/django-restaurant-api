@@ -7,5 +7,15 @@ from .serializers import FoodSerializer
 
 
 class FoodListAPIView(generics.ListAPIView):
-    queryset = Food.objects.all()
+    queryset = Food.objects.filter(active=True)
     serializer_class = FoodSerializer  # in serializer, we determine what fields are returned and are edited. Serializes information as JSON.
+
+
+class AdminFoodListAPIView(generics.ListAPIView):
+    queryset = Food.objects.all()
+    serializer_class = FoodSerializer
+    
+
+class FoodDetailAPIView(generics.RetrieveUpdateAPIView):
+    queryset = Food.objects.all()
+    serializer_class = FoodSerializer
