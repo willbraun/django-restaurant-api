@@ -20,7 +20,7 @@
 	height: 100vh;
 }
 
-header {
+.app-header {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -28,10 +28,17 @@ header {
 	border-bottom: var(--border);
 }
 
-header > img {
+.app-header > img {
 	height: 70%;
 	border-radius: 50%;
 	box-shadow: 0 0 10px 2px #aaa;
+}
+
+.app-header > button {
+	border: none;
+	border-radius: 3px;
+	margin-left: 1rem;
+	background-color: #ddd;
 }
 
 h1 {
@@ -95,14 +102,6 @@ h2 {
 	z-index: 10;
 	transition: var(--transition-time);
 }
-
-/* .menu-list-box h2, .order-box h2 {
-	position: sticky;
-	top: 0;
-	background-color: #fff;
-	z-index: 10;
-	padding: 0.5rem;
-} */
 
 .menu-item {
 	position: relative;

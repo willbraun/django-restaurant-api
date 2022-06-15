@@ -25,7 +25,7 @@ const Order = ({state, removeItem, increaseQuantity, decreaseQuantity, clearSele
 
     const [customerName, setCustomerName] = useState('');
 
-    const orders = state.selection.map(order => <OrderItem key={order.id} {...order} removeItem={removeItem} increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity}/>);
+    const orders = state.selection.map(order => <OrderItem key={order.uid} {...order} removeItem={removeItem} increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity}/>);
     const total = state.selection.reduce((acc, i) => acc + (parseFloat(i.price) * i.quantity), 0).toFixed(2);
 
     const order = {

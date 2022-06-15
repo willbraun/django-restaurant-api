@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import Admin from './components/Admin';
 import MenuList from './components/MenuList';
 import Order from './components/Order';
@@ -14,7 +15,6 @@ function App() {
 	const [state, setState] = useState({
         menuItems: [],
 		selection: [],
-        uid: 0,
 		showOrderMobile: false,
 		showAdminView: false,
     });
@@ -28,15 +28,16 @@ function App() {
 			}
 
 			const data = await response.json()
-			setState({...state, menuItems: data, uid: data.length});
+			data.forEach(item => item.uid = uuidv4());
+			
+			setState({...state, menuItems: data});
 		}
 
 		getMenuItems()
 	}, [])
 
 	const addItem = (item) => {
-		const newId = state.uid + 1;
-		item.id = newId;
+		item.uid = uuidv4();
 
 		const newList = state.selection;
 
@@ -49,27 +50,27 @@ function App() {
 			newList[index].quantity++;
 		}
 
-		setState({...state, selection: newList, uid: newId})
+		setState({...state, selection: newList});
 	};
 
-	const removeItem = (id) => {
+	const removeItem = (uid) => {
 		const newList = state.selection;
-		const index = newList.findIndex(item => item.id === id);
+		const index = newList.findIndex(item => item.uid === uid);
 		newList.splice(index, 1);
 		setState({...state, selection: newList});
 	}
 
-	const increaseQuantity = (id) => {
+	const increaseQuantity = (uid) => {
 		const newList = state.selection;
-		const index = newList.findIndex(item => item.id === id);
+		const index = newList.findIndex(item => item.uid === uid);
 		newList[index].quantity++;
 		setState({...state, selection: newList});
 	}
 
-	const decreaseQuantity = (id) => {
+	const decreaseQuantity = (uid) => {
 		const newList = state.selection;
-		const index = newList.findIndex(item => item.id === id);
-		newList[index].quantity === 1 ? removeItem(id) : newList[index].quantity--;
+		const index = newList.findIndex(item => item.uid === uid);
+		newList[index].quantity === 1 ? removeItem(uid) : newList[index].quantity--;
 		setState({...state, selection: newList});
 	}
 
@@ -88,7 +89,7 @@ function App() {
 	const totalQuantity = state.selection.reduce((acc, i) => acc + i.quantity, 0);
 	
 	const header = (
-		<header>
+		<header className="app-header">
 			<img src={tennisBall} alt="tennis ball" />
 			<h1>Love-All Ice Cream</h1>
 			<button type="button" onClick={() => setAdminView(false)}>Customer</button>
