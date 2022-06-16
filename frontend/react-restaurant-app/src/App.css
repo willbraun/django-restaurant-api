@@ -10,6 +10,7 @@
 	--order-item-color: rgb(230, 192, 255);
 	--checkout-color: rgb(141, 243, 184);
 	--box-shadow: 0 2px 5px 2px #ddd;
+	--content-height: calc(100vh - var(--header-height));
 }
 
 * {	
@@ -82,6 +83,7 @@ h2, .menu-items-bar {
 	font-size: 1.5rem;
 	font-weight: 700;
 	width: 100%;
+	margin-bottom: 0.3rem;
 }
 
 .menu-items-bar > h2 {
@@ -92,7 +94,7 @@ h2, .menu-items-bar {
 .menu-list-box {
 	position: absolute;
 	left: 0;
-	height: calc(100vh - var(--header-height));
+	height: var(--content-height);
 	width: calc(100vw - var(--order-width));
 	overflow: auto;
 }
@@ -100,7 +102,7 @@ h2, .menu-items-bar {
 .order-box {
 	position: absolute;
 	right: 0;
-	height: calc(100vh - var(--header-height));
+	height: var(--content-height);
 	width: var(--order-width);
 	border-left: var(--border);
 	overflow: auto;
@@ -265,10 +267,6 @@ h2, .menu-items-bar {
 	font-weight: 700;
 }
 
-.checkout:hover {
-	background-color: rgb(119, 222, 119);
-}
-
 .admin-sidebar {
 	position: absolute;
 	left: 0;
@@ -297,15 +295,62 @@ h2, .menu-items-bar {
 .admin-main {
 	position: absolute;
 	left: var(--admin-sidebar-width);
-	width: calc(100% - var(--admin-sidebar-width))
+	width: calc(100% - var(--admin-sidebar-width));
+	height: var(--content-height);
+	overflow: auto;
+}
+
+.admin-order-list {
+	width: 90%;
+	margin: auto;
+}
+
+.admin-order {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+	padding: 1rem;
+	background-color: var(--checkout-color);
+	border-radius: 1rem;
+	box-shadow: var(--box-shadow);
+}
+
+.customer-name {
+	font-size: 1.5rem;
+}
+
+.bold {
+	font-weight: 700;
+}
+
+.admin-order table {
+	min-width: 20rem;
+}
+
+.admin-order > .right {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	min-width: 10rem;
+}
+
+.admin-order > .right > div {
+	display: inline-block;
+}
+
+.order-price {
+	display: block;
+	margin: 0 0 auto;
+	font-size: 1.5rem;
 }
 
 .add-menu-item-button {
 	position: absolute;
-	top: 0.5rem;
+	top: 0.4rem;
 	right: 1rem;
 	z-index: 20;
 	font-weight: 700;
+	margin: 0 auto;
 }
 
 .add-menu-item-form {
@@ -353,6 +398,10 @@ input[type="checkbox"] {
 
 .edit-price-row input {
 	width: 5rem;
+}
+
+button:hover {
+	filter: brightness(90%);
 }
 
 @media (max-width: 1100px) {

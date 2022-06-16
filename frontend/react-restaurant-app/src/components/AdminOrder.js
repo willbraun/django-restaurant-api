@@ -37,42 +37,48 @@ const AdminOrder = ({id, data, completed, cancelled}) => {
 	}
     
     const items = data.items;
-    let table;
+    if(!items) {
+		return <div>Fetching data...</div>
+	}
 
-    if (items) {
-        const tableRows = items.map((item, i) => (
-            <tr key={i}>
-                <td>{item.title}</td>
-                <td>{item.quantity}</td>
-            </tr>
-        ))
+    const tableRows = items.map((item, i) => (
+        <tr key={i}>
+            <td>{item.title}</td>
+            <td>{item.quantity}</td>
+        </tr>
+    ))
 
-        table = (
-            <table>
-                <thead>
-                    <tr>
-                        <th>Menu Item</th>
-                        <th>Quantity</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {tableRows}
-                </tbody>
-            </table>
-        )
-    }
+    const table = (
+        <table>
+            <thead>
+                <tr>
+                    <th className="bold">Menu Item</th>
+                    <th className="bold">Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {tableRows}
+            </tbody>
+        </table>
+    )
 
 
     return (
         <article className="admin-order">
             <div className="left">
-                <p>{data.customerName}</p>
+                <p className="customer-name">Customer: <span className="bold">{data.customerName}</span></p>
                 {table}
-                <label htmlFor="completed">Completed</label>
-                <input type="checkbox" id="completed" defaultChecked={state.completed} onChange={(e) => updateOrder({...state, completed: e.target.checked})}/>
-                <label htmlFor="cancelled">Cancelled</label>
-                <input type="checkbox" id="cancelled" defaultChecked={state.cancelled} onChange={(e) => updateOrder({...state, cancelled: e.target.checked})}/> 
-                <p>${data.total}</p>
+            </div>
+            <div className="right">
+                <p className="order-price">Total: <span className="bold">${data.total}</span></p>
+                <div>
+                    <label htmlFor="completed">Completed</label>
+                    <input type="checkbox" id="completed" defaultChecked={state.completed} onChange={(e) => updateOrder({...state, completed: e.target.checked})}/>
+                </div>
+                <div>
+                    <label htmlFor="cancelled">Cancelled</label>
+                    <input type="checkbox" id="cancelled" defaultChecked={state.cancelled} onChange={(e) => updateOrder({...state, cancelled: e.target.checked})}/> 
+                </div>
             </div>
         </article>
     )

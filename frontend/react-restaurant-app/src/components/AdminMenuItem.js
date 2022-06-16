@@ -101,7 +101,6 @@ const AdminMenuItem = ({id, title, description, price, imgSrc, active, editMenuI
             </form>
         </article>
     )
-    
 
     return (
         <>

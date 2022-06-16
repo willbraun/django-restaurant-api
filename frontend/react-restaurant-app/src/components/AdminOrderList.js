@@ -27,13 +27,14 @@ const AdminOrderList = () => {
 	}, [])
 
     const orderListRender = orderList.map(order => <AdminOrder key={order.uid} {...order}/>);
-    
 
     return (
-        <section>
-            <h2>Orders</h2>
-            {orderListRender}
-        </section>
+        <>
+			<h2>Orders</h2>
+			<section className="admin-order-list">
+            	{orderListRender}
+        	</section>
+		</>
     )
 }
 
