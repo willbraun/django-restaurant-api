@@ -45,6 +45,7 @@ const AddMenuItem = ({updatePage, addItemToMenu}) => {
     }
 
     return (
+        
         <section className="add-menu-item-section">
             <h2>Add Menu Item</h2>
             <form className="add-menu-item-form" onSubmit={handleSubmit}>
@@ -57,7 +58,7 @@ const AddMenuItem = ({updatePage, addItemToMenu}) => {
                     <input type="text" id="description" required onChange={(e) => setState({...state, description: e.target.value})}/>
                 </div>
                 <div className="form-row">
-                    <label htmlFor="price">Price</label>
+                    <label htmlFor="price">Price ($)</label>
                     <input type="text" id="price" required onChange={(e) => setState({...state, price: parseFloat(e.target.value).toFixed(2)})}/>
                 </div>
                 <div>Placeholder for image upload</div>
@@ -65,12 +66,14 @@ const AddMenuItem = ({updatePage, addItemToMenu}) => {
                     <label htmlFor="image">Image</label>
                     <input type="file" id="image" required onChange={(e) => {console.log(e); setState({...state, imgSrc: e.target.value})}}/>
                 </div> */}
-                <div className="form-row">
-                    <label htmlFor="active">Active</label>
+                <div className="active">
+                    <label htmlFor="active" id="active-label">Active</label>
                     <input type="checkbox" id="active" defaultChecked={state.active} onChange={(e) => setState({...state, active: e.target.checked})}/>
                 </div>
-                <button type="button" className="btn btn-secondary cancel-new-menu-item" onClick={() => updatePage('menu-items')}>Cancel</button>
-                <button type="submit" className="btn btn-success finish-add-menu-item">Add</button>    
+                <div className="add-bottom">
+                    <button type="button" className="btn btn-secondary cancel-new-menu-item" onClick={() => updatePage('menu-items')}>Cancel</button>
+                    <button type="submit" className="btn btn-success finish-add-menu-item">Add</button> 
+                </div>
             </form>
         </section>
     )

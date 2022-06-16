@@ -9,6 +9,7 @@
 	--menu-item-color: rgb(185, 238, 255);
 	--order-item-color: rgb(230, 192, 255);
 	--checkout-color: rgb(141, 243, 184);
+	--box-shadow: 0 2px 5px 2px #ddd;
 }
 
 * {	
@@ -117,7 +118,7 @@ h2, .menu-items-bar {
 	margin-bottom: 1.2rem;
 	border-radius: 1rem;
 	overflow: hidden;
-	box-shadow: 0 2px 5px 2px #d9d9d9;
+	box-shadow: var(--box-shadow);
 }
 
 .img-box {
@@ -173,7 +174,7 @@ h2, .menu-items-bar {
 	padding: 0.7rem;
 	height: fit-content;
 	border-radius: 0.7rem;
-	box-shadow: 0 2px 5px 2px #ddd;
+	box-shadow: var(--box-shadow);
 	text-align: left;
 	background-color: var(--order-item-color);
 }
@@ -304,6 +305,41 @@ h2, .menu-items-bar {
 	top: 0.5rem;
 	right: 1rem;
 	z-index: 20;
+	font-weight: 700;
+}
+
+.add-menu-item-form {
+	width: 70%;
+	margin: auto;
+	text-align: center;
+	background-color: var(--menu-item-color);
+	border-radius: 1rem;
+	box-shadow: var(--box-shadow);
+	padding: 1rem;
+}
+
+.add-menu-item-form .form-row > * {
+	display: inline-block;
+	margin-bottom: 1rem;
+}
+
+.add-menu-item-form label:not(#active-label) {
+	width: 20%;
+}
+
+.add-menu-item-form input:not(#active) {
+	width: 80%;
+}
+
+.add-bottom {
+	width: fit-content;
+	margin: 1rem auto;
+}
+
+.add-bottom > button {
+	margin: 0 1rem;
+	text-align: center;
+	border-radius: 500px;
 	font-weight: 700;
 }
 
