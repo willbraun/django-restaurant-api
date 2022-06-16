@@ -72,7 +72,7 @@ h1 {
 	font-weight: 700;
 }
 
-h2 {
+h2, .menu-items-bar {
 	position: sticky;
 	top: 0;
 	background-color: #fff;
@@ -81,6 +81,11 @@ h2 {
 	font-size: 1.5rem;
 	font-weight: 700;
 	width: 100%;
+}
+
+.menu-items-bar > h2 {
+	position: relative;
+	padding: 0;
 }
 
 .menu-list-box {
@@ -292,6 +297,14 @@ h2 {
 	position: absolute;
 	left: var(--admin-sidebar-width);
 	width: calc(100% - var(--admin-sidebar-width))
+}
+
+.add-menu-item-button {
+	position: absolute;
+	top: 0.5rem;
+	right: 1rem;
+	z-index: 20;
+	font-weight: 700;
 }
 
 @media (max-width: 1100px) {

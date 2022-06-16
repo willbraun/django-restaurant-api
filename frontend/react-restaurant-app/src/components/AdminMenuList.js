@@ -6,8 +6,7 @@ function handleError(err) {
 	console.warn(err);
 }
 
-const AdminMenuList = () => {
-    const [menuItemList, setMenuItemList] = useState([]);
+const AdminMenuList = ({state, updatePage, updateMenuItemList}) => {
 
     useEffect(() => {
 		const getMenuItems = async () => {
@@ -20,17 +19,20 @@ const AdminMenuList = () => {
 			const data = await response.json()
             data.forEach(item => item.uid = uuidv4());
 
-			setMenuItemList(data);
+			updateMenuItemList(data);
 		}
 
 		getMenuItems();
 	}, [])
 
-    const menuItemListRender = menuItemList.map(menuItem => <AdminMenuItem key={menuItem.uid} {...menuItem}/>);
+    const menuItemListRender = state.menuItemList.map(menuItem => <AdminMenuItem key={menuItem.uid} {...menuItem}/>);
 
     return (
         <section>
-            <h2>Menu Items</h2>
+            <div className="menu-items-bar">
+                <h2>Menu Items</h2>
+                <button type="button" className="btn btn-primary add-menu-item-button" onClick={() => updatePage('add-menu-item-form')}>+ Add Menu Item</button>    
+            </div>
             {menuItemListRender}
         </section>
     )
