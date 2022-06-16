@@ -18,7 +18,6 @@ const AddMenuItem = ({updatePage, addItemToMenu}) => {
     const [state, setState] = useState(start);
 
     const saveNewMenuItem = async (newMenuItem) => {
-
 		const options = {
 			method: 'POST',
 			headers: {
@@ -61,6 +60,7 @@ const AddMenuItem = ({updatePage, addItemToMenu}) => {
                     <label htmlFor="price">Price</label>
                     <input type="text" id="price" required onChange={(e) => setState({...state, price: parseFloat(e.target.value).toFixed(2)})}/>
                 </div>
+                <div>Placeholder for image upload</div>
                 {/* <div className="form-row">
                     <label htmlFor="image">Image</label>
                     <input type="file" id="image" required onChange={(e) => {console.log(e); setState({...state, imgSrc: e.target.value})}}/>

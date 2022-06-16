@@ -14,7 +14,7 @@ const Admin = () => {
             return <AdminOrderList />;
         }
         else if (page === 'menu-items') {
-            return <AdminMenuList state={state} updatePage={updatePage} updateMenuItemList={updateMenuItemList}/>;
+            return <AdminMenuList state={state} updatePage={updatePage} updateMenuItemList={updateMenuItemList} editMenuItem={editMenuItem}/>;
         }
         else if (page === 'add-menu-item-form') {
             return <AddMenuItem updatePage={updatePage} addItemToMenu={addItemToMenu}/>;
@@ -36,6 +36,13 @@ const Admin = () => {
 
     const addItemToMenu = (newMenuItem) => {
         setState({...state, menuItemList: state.menuItemList.push(newMenuItem)});
+    }
+
+    const editMenuItem = ({id, title, description, price, imgSrc, active}) => {
+        const newList = state.menuItemList;
+		const index = newList.findIndex(item => item.id === id);
+		newList[index] = {...state, title: title, description: description, price: price, imgSrc: imgSrc, active: active};
+		updateMenuItemList(newList);
     }
 
     return (
