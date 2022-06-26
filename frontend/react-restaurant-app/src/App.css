@@ -338,6 +338,7 @@ h2, .menu-items-bar {
 	width: calc(100% - var(--admin-sidebar-width));
 	height: var(--content-height);
 	overflow: auto;
+	min-width: 40rem;
 }
 
 .admin-order-list {
