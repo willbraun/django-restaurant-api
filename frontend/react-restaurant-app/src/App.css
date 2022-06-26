@@ -127,15 +127,16 @@ h2, .menu-items-bar {
 	position: relative;
 	min-width: 18rem;
 	height: 100%;
+	display: flex;
+	align-items: center;
 	overflow: hidden;
 }
 
 .img-box img {
 	position: absolute;
-	overflow: hidden;
 	width: 100%;
-	bottom: -30%;
-	left: 0;
+	height: 100%;
+	object-fit: cover;
 }
 
 .menu-list {
@@ -355,8 +356,7 @@ h2, .menu-items-bar {
 
 .add-menu-item-form {
 	width: 70%;
-	margin: auto;
-	text-align: center;
+	margin: 1rem auto 2rem;
 	background-color: var(--menu-item-color);
 	border-radius: 1rem;
 	box-shadow: var(--box-shadow);
@@ -373,6 +373,14 @@ h2, .menu-items-bar {
 }
 
 .add-menu-item-form input:not(#active) {
+	width: 80%;
+}
+
+.add-menu-item-form #active {
+	text-align: left;
+}
+
+.add-menu-item-form img {
 	width: 80%;
 }
 

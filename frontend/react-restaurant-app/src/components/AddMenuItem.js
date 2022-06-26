@@ -11,20 +11,35 @@ const AddMenuItem = ({updatePage, addItemToMenu}) => {
         title: '',
         description: '',
         price: '',
-        // imgSrc: '', 
+        imgSrc: '', 
         active: true,
     }
     
     const [state, setState] = useState(start);
+    const [preview, setPreview] = useState(null)
+
+    const handleImage = (e) => {
+        const file = e.target.files[0];
+        setState({...state, imgSrc: file});
+
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setPreview(reader.result);
+        }
+
+        reader.readAsDataURL(file);
+    }
 
     const saveNewMenuItem = async (newMenuItem) => {
-		const options = {
+		const formData = new FormData();
+        Object.entries(newMenuItem).forEach(entry => formData.append(entry[0], entry[1]));
+        
+        const options = {
 			method: 'POST',
 			headers: {
-				'Content-Type': 'application/json',
 				'X-CSRFToken': Cookies.get('csrftoken'),
 			},
-			body: JSON.stringify(newMenuItem),
+			body: formData,
 		}
 
 		const response = await fetch('/api_v1/foods/admin/', options).catch(handleError);
@@ -61,11 +76,11 @@ const AddMenuItem = ({updatePage, addItemToMenu}) => {
                     <label htmlFor="price">Price ($)</label>
                     <input type="text" id="price" required onChange={(e) => setState({...state, price: parseFloat(e.target.value).toFixed(2)})}/>
                 </div>
-                <div>Placeholder for image upload</div>
-                {/* <div className="form-row">
+                <div className="form-row">
                     <label htmlFor="image">Image</label>
-                    <input type="file" id="image" required onChange={(e) => {console.log(e); setState({...state, imgSrc: e.target.value})}}/>
-                </div> */}
+                    <input type="file" id="image" required onChange={handleImage}/>
+                    {state.imgSrc && <img className="image-preview" src={preview} alt='article' />}
+                </div>
                 <div className="active">
                     <label htmlFor="active" id="active-label">Active</label>
                     <input type="checkbox" id="active" defaultChecked={state.active} onChange={(e) => setState({...state, active: e.target.checked})}/>
