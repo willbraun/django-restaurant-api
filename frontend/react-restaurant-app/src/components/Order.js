@@ -24,6 +24,7 @@ const showOnlyAllowed = obj => {
 const Order = ({state, removeItem, increaseQuantity, decreaseQuantity, clearSelection}) => {
 
     const [customerName, setCustomerName] = useState('');
+    const [showThankYou, setShowThankYou] = useState(false);
 
     const orders = state.selection.map(order => <OrderItem key={order.uid} {...order} removeItem={removeItem} increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity}/>);
     const total = state.selection.reduce((acc, i) => acc + (parseFloat(i.price) * i.quantity), 0).toFixed(2);
@@ -54,11 +55,17 @@ const Order = ({state, removeItem, increaseQuantity, decreaseQuantity, clearSele
 		}
 	}
 
+    const toggleThankYou = () => {
+        setShowThankYou(true);
+        setTimeout(() => setShowThankYou(false), 5000);
+    }
+
     const submitForm = (e) => {
         e.preventDefault();
         addOrder(order);
-        clearSelection()
+        clearSelection();
         setCustomerName('');
+        toggleThankYou();
         e.target.reset();
     }
 
@@ -66,6 +73,7 @@ const Order = ({state, removeItem, increaseQuantity, decreaseQuantity, clearSele
         <section className="order">
             <div className="order-area">
                 {orders}
+                <p className={showThankYou ? "thank-you show" : "thank-you"}>Thank you for your order!</p>
             </div>
             <form className="checkout-form" onSubmit={submitForm}>
                 <label htmlFor="customerName"></label>

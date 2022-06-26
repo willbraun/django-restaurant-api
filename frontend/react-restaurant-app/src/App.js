@@ -92,8 +92,8 @@ function App() {
 		<header className="app-header">
 			<img src={tennisBall} alt="tennis ball" />
 			<h1>Love-All Ice Cream</h1>
-			<button className="customer" type="button" onClick={() => setAdminView(false)}>Customer</button>
-			<button className="admin" type="button" onClick={() => setAdminView(true)}>Admin</button>
+			<button className={state.showAdminView ? "customer" : "customer current-page"} type="button" onClick={() => setAdminView(false)}>Customer</button>
+			<button className={state.showAdminView ? "admin current-page" : "admin"} type="button" onClick={() => setAdminView(true)}>Admin</button>
 			<button className="cart-button" onClick={() => toggleOrderMobile()}>
 				<img className="cart-icon" src={cartIcon} alt="cart icon" />
 				<p className="count">{totalQuantity}</p>

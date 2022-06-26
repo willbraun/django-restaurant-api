@@ -36,6 +36,13 @@
 	box-shadow: 0 0 10px 2px #aaa;
 }
 
+.current-page {
+	text-decoration: underline;
+	text-decoration-color: rgb(255, 166, 2);
+	text-decoration-thickness: 0.2rem;
+	text-underline-offset: 10px;
+}
+
 .customer, .admin {
 	border: none;
 	border-radius: 3px;
@@ -276,6 +283,21 @@ h2, .menu-items-bar {
 	padding: 0 1rem;
 	font-size: 1.3rem;
 	font-weight: 700;
+}
+
+.thank-you {
+	position: absolute;
+	bottom: 8rem;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100%;
+	font-size: 1.3rem;
+	opacity: 0;
+	transition: 0.5s;
+}
+
+.thank-you.show {
+	opacity: 1;
 }
 
 .admin-sidebar {
