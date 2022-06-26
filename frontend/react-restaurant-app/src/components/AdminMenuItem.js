@@ -7,6 +7,7 @@ const handleError = err => {
 
 const AdminMenuItem = ({id, title, description, price, imgSrc, active, editMenuItem}) => {
     const [isEditing, setIsEditing] = useState(false);
+    const [preview, setPreview] = useState(imgSrc);
     const [state, setState] = useState({
         title: title,
         description: description,
@@ -15,7 +16,9 @@ const AdminMenuItem = ({id, title, description, price, imgSrc, active, editMenuI
         active: active,
     })
 
-    const resetState = () => {
+    const resetStates = () => {
+        setIsEditing(false);
+        setPreview(imgSrc);
         setState({
             title: title,
             description: description,
@@ -23,6 +26,18 @@ const AdminMenuItem = ({id, title, description, price, imgSrc, active, editMenuI
             imgSrc: imgSrc,
             active: active,
         })
+    }
+
+    const handleImage = (e) => {
+        const file = e.target.files[0];
+        setState({...state, imgSrc: file});
+
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setPreview(reader.result);
+        }
+
+        reader.readAsDataURL(file);
     }
 
     const saveEditMenuItem = async (editedItem) => {
@@ -75,9 +90,9 @@ const AdminMenuItem = ({id, title, description, price, imgSrc, active, editMenuI
     const editHTML = (
         <article className="menu-item">
             <div className="img-box">
-                <img src={imgSrc} alt={title} />
+                <img src={preview} alt={title} />
+                <button type="button" className="btn">Edit</button>
             </div>
-            {/* Do image upload here also */}
             <form className="content-box" onSubmit={handleSubmit}>
                 <label htmlFor='edit-title'></label>
                 <input type="text" id='edit-title' value={state.title} required placeholder="Title..." onChange={(e) => setState({...state, title: e.target.value})}/>
@@ -85,9 +100,15 @@ const AdminMenuItem = ({id, title, description, price, imgSrc, active, editMenuI
                 <label htmlFor='edit-desc'></label>
                 <input type="text" id='edit-desc' value={state.description} required placeholder="Description..." onChange={(e) => setState({...state, description: e.target.value})}/>
 
-                <div className="active">
-                    <label htmlFor='edit-active'>Active</label>
-                    <input type="checkbox" id='edit-active' defaultChecked={state.active} onChange={(e) => setState({...state, active: e.target.value})}/>
+                <div className="middle">
+                    <div>
+                        <label htmlFor="image">Upload Image</label>
+                        <input type="file" id="image" required onChange={handleImage}/>
+                    </div>
+                    <div className="active">
+                        <label htmlFor='edit-active'>Active</label>
+                        <input type="checkbox" id='edit-active' defaultChecked={state.active} onChange={(e) => setState({...state, active: e.target.value})}/>
+                    </div>
                 </div>
 
                 <div className="bottom">
@@ -95,7 +116,7 @@ const AdminMenuItem = ({id, title, description, price, imgSrc, active, editMenuI
                         <label htmlFor="edit-price">$</label>
                         <input type="text" id="edit-price" value={state.price} required placeholder="Price..." onChange={(e) => setState({...state, price: e.target.value})}/>
                     </div>
-                    <button type="button" className="btn btn-secondary cancel" onClick={() => {resetState(); setIsEditing(false)}}>Cancel</button>
+                    <button type="button" className="btn btn-secondary cancel" onClick={() => {resetStates()}}>Cancel</button>
                     <button type="submit" className="btn btn-success save">Save</button>
                 </div>
             </form>

@@ -153,10 +153,20 @@ h2, .menu-items-bar {
 	flex-grow: 1;
 }
 
+.menu-item .middle {
+	display: flex;
+	justify-content: space-between;
+}
+
+.menu-item #image {
+	margin-left: 1rem;
+}
+
 .menu-item .bottom {
 	position: relative;
 	display: flex;
 	justify-content: space-between;
+	align-items: baseline;
 }
 
 .menu-item .price {
