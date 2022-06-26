@@ -110,8 +110,8 @@ function App() {
 			</main>
 			<aside className={`order-box${state.showOrderMobile ? ' show-order': ''}`}>
 				<h2>Order</h2>
-				<button className="x-button" onClick={() => toggleOrderMobile()}>
-					<img className="x-icon" src={xIcon} alt="x icon" />
+				<button className="hide" onClick={() => toggleOrderMobile()}>
+					<p>Back to Menu</p>
 				</button>
 				<Order state={state} removeItem={removeItem} increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity} clearSelection={clearSelection}/>
 			</aside>
