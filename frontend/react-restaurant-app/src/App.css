@@ -58,7 +58,7 @@ h1 {
 	margin: 2rem;
 }
 
-.cart-button {
+.cart-button, .x-button {
 	visibility: hidden;
 	position: absolute;
 	height: 2rem;
@@ -67,8 +67,15 @@ h1 {
 	border: none;
 }
 
-.cart-icon {
+.cart-icon, .x-icon {
 	height: 100%;
+}
+
+.x-button {
+	position: absolute;
+	top: 0.5rem;
+	right: 1.9rem;
+	z-index: 10;
 }
 
 .count {
@@ -478,7 +485,7 @@ button:hover {
 		display: none;
 	}
 
-	.cart-button {
+	.cart-button, .x-button {
 		visibility: visible;
 	}
 

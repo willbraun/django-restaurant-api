@@ -3,8 +3,9 @@ import { v4 as uuidv4 } from 'uuid';
 import Admin from './components/Admin';
 import MenuList from './components/MenuList';
 import Order from './components/Order';
-import tennisBall from './images/tennis_ball.png'
-import cartIcon from './images/cart-shopping-solid.svg'
+import tennisBall from './images/tennis_ball.png';
+import cartIcon from './images/cart-shopping-solid.svg';
+import xIcon from './images/xmark-solid.svg'
 import './App.css';
 
 function handleError(err) {
@@ -109,6 +110,9 @@ function App() {
 			</main>
 			<aside className={`order-box${state.showOrderMobile ? ' show-order': ''}`}>
 				<h2>Order</h2>
+				<button className="x-button" onClick={() => toggleOrderMobile()}>
+					<img className="x-icon" src={xIcon} alt="x icon" />
+				</button>
 				<Order state={state} removeItem={removeItem} increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity} clearSelection={clearSelection}/>
 			</aside>
 		</>

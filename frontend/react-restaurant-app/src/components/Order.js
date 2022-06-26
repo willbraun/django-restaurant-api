@@ -16,7 +16,6 @@ const showOnlyAllowed = obj => {
         else {
             return next;
         }
-        
     }, {})
     return result
 }
