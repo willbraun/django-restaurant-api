@@ -6,26 +6,22 @@ const handleError = err => {
 }
 
 const AdminMenuItem = ({id, title, description, price, imgSrc, active, editMenuItem}) => {
-    const [isEditing, setIsEditing] = useState(false);
-    const [preview, setPreview] = useState(imgSrc);
-    const [state, setState] = useState({
+    const defaultState = {
         title: title,
         description: description,
         price: price,
         imgSrc: imgSrc,
         active: active,
-    })
+    }
+    
+    const [isEditing, setIsEditing] = useState(false);
+    const [preview, setPreview] = useState(imgSrc);
+    const [state, setState] = useState(defaultState)
 
     const resetStates = () => {
         setIsEditing(false);
         setPreview(imgSrc);
-        setState({
-            title: title,
-            description: description,
-            price: price,
-            imgSrc: imgSrc,
-            active: active,
-        })
+        setState(defaultState);
     }
 
     const handleImage = (e) => {
@@ -41,13 +37,19 @@ const AdminMenuItem = ({id, title, description, price, imgSrc, active, editMenuI
     }
 
     const saveEditMenuItem = async (editedItem) => {
+        const formData = new FormData();
+        Object.entries(editedItem).forEach(entry => {
+            if (entry[1] !== defaultState[entry[0]]) {
+                formData.append(entry[0], entry[1]);
+            }
+        });
+        
         const options = {
-            method: 'PUT',
+            method: 'PATCH',
             headers: {
-                'Content-Type': 'application/json',
                 'X-CSRFToken': Cookies.get('csrftoken'),
             },
-            body: JSON.stringify(editedItem),
+            body: formData,
         }
 
         const response = await fetch(`/api_v1/foods/${id}/`, options).catch(handleError);
@@ -64,7 +66,7 @@ const AdminMenuItem = ({id, title, description, price, imgSrc, active, editMenuI
     const handleSubmit = (e) => {
         e.preventDefault();
         saveEditMenuItem({...state, id: id});
-        setIsEditing(false);
+        resetStates();
     }
 
     const previewHTML = (
@@ -103,7 +105,7 @@ const AdminMenuItem = ({id, title, description, price, imgSrc, active, editMenuI
                 <div className="middle">
                     <div>
                         <label htmlFor="image">Upload Image</label>
-                        <input type="file" id="image" required onChange={handleImage}/>
+                        <input type="file" id="image" onChange={handleImage}/>
                     </div>
                     <div className="active">
                         <label htmlFor='edit-active'>Active</label>
