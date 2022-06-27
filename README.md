@@ -5,6 +5,7 @@ Features
   - Add item to order
   - Modify quantity of items in order
   - Submit order
+  - Mobile responsive view
 - Admin view
   - Review orders
   - Mark orders as completed or cancelled
